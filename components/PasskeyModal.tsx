@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
+// import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import {
@@ -18,7 +19,8 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { decryptKey, encryptKey } from "@/lib/utils";
+import {  encryptKey } from "@/lib/utils";
+// import { decryptKey, encryptKey } from "@/lib/utils";
 
 export const PasskeyModal = () => {
   const router = useRouter();
@@ -44,7 +46,7 @@ export const PasskeyModal = () => {
     //     setOpen(true);
     //   }
   }, 
-  [encryptedKey]
+  // [encryptedKey]
 );
 
   const closeModal = () => {

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useCallback, onChange } from "react";
+import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
 import { convertFileToUrl } from "@/lib/utils";

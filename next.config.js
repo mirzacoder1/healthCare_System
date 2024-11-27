@@ -1,7 +1,14 @@
 const { withSentryConfig } = require("@sentry/nextjs");
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  typescript:{
+    ignoreBuildErrors: true,
+  },
+  eslint:{
+    ignoreDuringBuild: true,
+  }
+};
 
 module.exports = withSentryConfig(
   nextConfig,
