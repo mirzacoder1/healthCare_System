@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import {  useRouter } from "next/navigation";
-// import { usePathname, useRouter } from "next/navigation";
+// import {  useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import {
@@ -19,33 +19,33 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-// import { decryptKey, encryptKey } from "@/lib/utils";
+import { decryptKey, encryptKey } from "@/lib/utils";
 
 export const PasskeyModal = () => {
   const router = useRouter();
-  // const path = usePathname();
+  const path = usePathname();
   const [open, setOpen] = useState(true);
   const [passkey, setPasskey] = useState("");
   const [error, setError] = useState("");
 
-  // const encryptedKey =
-  //   typeof window !== "undefined"
-  //     ? window.localStorage.getItem("accessKey")
-  //     : null;
+  const encryptedKey =
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("accessKey")
+      : null;
 
   useEffect(() => {
-    // const accessKey = encryptedKey && decryptKey(encryptedKey);
+    const accessKey = encryptedKey && decryptKey(encryptedKey);
 
-    // if (path)
-    //   if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY!.toString()) {
-    //     setOpen(false);
-    //     console.log(accessKey);
-    //     router.push("/admin");
-    //   } else {
-    //     setOpen(true);
-    //   }
+    if (path)
+      if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY!.toString()) {
+        setOpen(false);
+        console.log(accessKey);
+        router.push("/admin");
+      } else {
+        setOpen(true);
+      }
   }, 
-  // [encryptedKey]
+  [encryptedKey]
 );
 
   const closeModal = () => {
@@ -59,9 +59,9 @@ export const PasskeyModal = () => {
     e.preventDefault();
 
     if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
-      // const encryptedKey = encryptKey(passkey);
+      const encryptedKey = encryptKey(passkey);
 
-      // localStorage.setItem("accessKey", encryptedKey);
+      localStorage.setItem("accessKey", encryptedKey);
 
       setOpen(false);
       router.push("/admin");
